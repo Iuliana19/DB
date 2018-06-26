@@ -1,0 +1,10 @@
+info.txt
+data/carriers.csv
+data/2000X2000.csv
+data/2000.csv
+createUser.sql
+Enunciat.pdf
+data/plane-data.csv
+data/airports.csv
+createUSFlightsSchema.sql
+loadDataInfile.sql
