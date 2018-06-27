@@ -9,21 +9,22 @@ FROM flights
 GROUP BY Origin;
 
 #exercise 3
-SELECT concat(Origin, ', ', colYear, ', ', colMonth, ', ', AVG(ArrDelay)) AS Delays
+SELECT Origin, colYear, colMonth, AVG(ArrDelay) AS Delays
 FROM usairlineflights.flights 
-GROUP BY Origin;
+GROUP BY Origin, colYear, colMonth;
 
 #exercise 4
-SELECT concat(City, ', ', colYear, ', ', colMonth, ', ', AVG(ArrDelay)) AS Delays
-FROM flights 
+SELECT City, colYear, colMonth, AVG(ArrDelay) AS Delays
+FROM usairlineflights.flights 
 LEFT JOIN usairports ON flights.Origin = usairports.IATA 
-GROUP BY Origin;
+GROUP BY Origin, colYear, colMonth;
 
 #exercise 5
-SELECT AVG(ArrDelay) AS Delays, Description AS Company
+SELECT SUM(Cancelled) as Total_cancelled, Description AS Company
 FROM flights 
 JOIN carriers ON flights.UniqueCarrier = carriers.CarrierCode
-GROUP BY UniqueCarrier DESC; 
+GROUP BY UniqueCarrier 
+ORDER BY Total_cancelled DESC;
 
 #exercise 6
 SELECT TailNum as Plane, SUM(Distance) as Total_Distance 
