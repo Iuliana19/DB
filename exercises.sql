@@ -17,12 +17,14 @@ GROUP BY Origin, colYear, colMonth;
 SELECT City, colYear, colMonth, AVG(ArrDelay) AS Delays
 FROM usairlineflights.flights 
 LEFT JOIN usairports ON flights.Origin = usairports.IATA 
-GROUP BY Origin, colYear, colMonth;
+GROUP BY City, colYear, colMonth
+ORDER BY City, colYear, colMonth;
 
 #exercise 5
-SELECT SUM(Cancelled) as Total_cancelled, Description AS Company
+SELECT COUNT(Cancelled) as Total_cancelled, Description AS Company
 FROM flights 
 JOIN carriers ON flights.UniqueCarrier = carriers.CarrierCode
+WHERE Cancelled = 1
 GROUP BY UniqueCarrier 
 ORDER BY Total_cancelled DESC;
 
